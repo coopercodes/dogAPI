@@ -10,30 +10,73 @@ The entire application is contained within the `index.js` file.
 
     npm install
 
-## Run the app
+## Start the server
 
     npm start
 
 
-# REST API
+# GraphQL API
 
-The REST API to the example app is described below.
+Below are some example queries of this GraphQL API
 
 ## Get list of Things
 
-### Request
+### Query to get all dogs
 
-`query `
+`query getAllDogs`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/
+    query GetAllDogs {
+      getAllDogs {
+        name
+        age
+      }
+    }
 
 ### Response
 
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
-    Content-Length: 2
+    {
+      "data": {
+        "getAllDogs": [
+          {
+            "name": "Bert",
+            "age": 10
+          },
+          {
+            "name": "Presto",
+            "age": 7
+          },
+          {
+            "name": "Felix",
+            "age": 3
+          }
+        ]
+      }
+    }
 
-    []
+### Query to get dog with name Bert
+
+`query getDog`
+
+    query GetDog($name: String) {
+      getDog(name: $name) {
+        name
+        age
+      }
+    }
+
+`variables`
+
+    {
+      "name": "Bert"
+    }
+
+### Response
+
+    {
+      "data": {
+        "getDog": {
+          "name": "Bert",
+          "age": 10
+        }
+      }
+    }
