@@ -19,9 +19,7 @@ The entire application is contained within the `index.js` file.
 
 Below are some example queries of this GraphQL API
 
-## Get list of Things
-
-### Query to get all dogs
+## Query to get all dogs
 
 `query getAllDogs`
 
@@ -53,7 +51,7 @@ Below are some example queries of this GraphQL API
       }
     }
 
-### Query to get dog with name Bert
+## Query to get dog with name Bert
 
 `query getDog`
 
